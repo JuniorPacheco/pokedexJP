@@ -8,6 +8,7 @@
   --colorButton: #D93F3F;
 
   --fuentePrincipal: 'Inter', sans-serif;
+  --fuenteSecundaria: 'Press Start 2P', 'Inter', sans-serif;
 }
 
 html {
@@ -196,7 +197,7 @@ img {
 
 .pokedex {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: calc((261px * 4) + 6rem);
   margin-bottom: 2rem;
 }
 
@@ -290,10 +291,23 @@ img {
   display: flex;
   flex-direction: column;
   text-align: center;
+  border-radius: 8px;
+}
+
+.pokeCard__name {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.pokeCard__type {
+  border-bottom: 1px solid rgb(221, 217, 217);
+  margin: 0 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .pokeCard__type p:first-of-type {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
@@ -310,4 +324,14 @@ img {
 
 .pokeCard__stat {
   width: calc((261px / 3) - 20px);
+  font-family: var(--fuenteSecundaria);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stat__name,
+.stat__number {
+  font-weight: bold;
+  font-size: 1.2rem;
 }

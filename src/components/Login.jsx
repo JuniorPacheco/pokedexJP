@@ -15,6 +15,8 @@ const Login = () => {
             </form>
         </section>
         <section className="login__footer">
+            <div className="footer__redBlock"></div>
+            <div className="footer__blackBlock"></div>
             <IconPokeball pokeballLayout={''}/>
         </section>
     </main>

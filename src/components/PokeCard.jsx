@@ -9,7 +9,6 @@ const PokeCard = ({ urlPokemon }) => {
         axios.get(url)
         .then(res => {
             setSpecies(res.data)
-            console.log(res.data)
         })
         .catch(err => console.log(err))
     }
@@ -19,7 +18,6 @@ const PokeCard = ({ urlPokemon }) => {
         .then(res => {
             setDataPokemon(res.data)
             requestSpeciesData(res.data.species.url)
-            console.log(res.data)
         })
         .catch(err => console.log(err))
     }, [])
@@ -44,15 +42,21 @@ const PokeCard = ({ urlPokemon }) => {
                                 'SPD'
 
         )
+        //{backgroundColor: species.color?.name}
     }
+
+    const changeColor = color => color === 'yellow' ? '#f7d708' : color === 'white' ? 'gray' : color
+
+    const changeFirstLetter = (word = '') => word[0]?.toUpperCase() + word?.substring(1)
+
   return (
-    <article className="pokeCard" style={{backgroundColor: species.color?.name}}>
+    <article className="pokeCard" style={{background: `linear-gradient(to top, white 0%, white 60% , white 60%, ${changeColor(species.color?.name)} 100%)`, boxShadow: `1px 1px 8px ${changeColor(species.color?.name)}`}}>
         <figure className="pokeCard__image">
             <img src={dataPokemon.sprites?.other['official-artwork'].front_default} alt="Pokedex logo" />
         </figure>
-        <h3>{dataPokemon.name}</h3>
+        <h3 className="pokeCard__name">{changeFirstLetter(dataPokemon.name)}</h3>
         <section className="pokeCard__type">
-            <p>{dataPokemon.types?.map(type => type.type.name).join(' / ')}</p>
+            <p>{dataPokemon.types?.map(type => changeFirstLetter(type.type.name)).join(' / ')}</p>
             <p>Type</p>
         </section>
         <section className="pokeCard__stats">
@@ -60,7 +64,7 @@ const PokeCard = ({ urlPokemon }) => {
                 dataPokemon.stats?.map(stat => (
                     <article className="pokeCard__stat" key={stat.stat.url}>
                         <p className="stat__name">{changeNameStats(stat.stat.name)}</p>
-                        <p className="stat__number">{stat.base_stat}</p>
+                        <p className="stat__number" style={{color: `${changeColor(species.color?.name)}`}}>{stat.base_stat}</p>
                     </article>
                 ))
             }
