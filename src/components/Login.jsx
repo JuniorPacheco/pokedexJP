@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux/es/exports"
 import IconPokeball from "./IconPokeball"
 import { setTrainerName } from "../store/slices/trainerName.slice"
+import Logo from '../images/logo.png'
 
 const Login = () => {
 
@@ -28,7 +29,7 @@ const Login = () => {
     <main className="login">
         <section className="login__body">
             <figure className="login__image">
-                <img src="./src/images/logo.png" alt="Pokedex logo" />
+                <img src={Logo} alt="Pokedex logo" />
             </figure>
             <h2 className="login__tittle">Hello Trainer!</h2>
             <p className="login__paragraph">Give me your name to start this adventure!</p>

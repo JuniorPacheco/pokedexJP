@@ -1,6 +1,7 @@
 import { Outlet, Navigate } from 'react-router-dom'
 import IconPokeball from "./IconPokeball"
 import { useSelector } from 'react-redux/es/hooks/useSelector'
+import Logo from '../images/logo.png'
 
 const Layout = () => {
     const trainerName = useSelector(state => state.trainerName)
@@ -14,7 +15,7 @@ const Layout = () => {
         <header className="header">
             <section className="header__redBlock">
                 <figure className="header__image">
-                    <img src="./src/images/logo.png" alt="Pokedex logo" />
+                    <img src={Logo} alt="Pokedex logo" />
                 </figure>
             </section>
             <section className="header__blackBlock">
