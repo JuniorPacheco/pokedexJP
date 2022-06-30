@@ -366,6 +366,11 @@ img {
   cursor: pointer;
 }
 
+.pokeCard__image {
+  width: 181px;
+  height: 181px;
+}
+
 .pokeCard__name {
   margin: 0;
   font-size: 2rem;

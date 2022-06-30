@@ -63,7 +63,7 @@ const PokeCard = ({ urlPokemon }) => {
         onClick={handleClickCard}
     >
         <figure className="pokeCard__image">
-            <img src={dataPokemon.sprites?.other['official-artwork'].front_default} alt="Pokedex logo" />
+            <img src={dataPokemon.sprites?.other['official-artwork'].front_default} alt="Pokemon Image" />
         </figure>
         <h3 className="pokeCard__name">{dataPokemon.name}</h3>
         <section className="pokeCard__type">
