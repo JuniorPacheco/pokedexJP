@@ -1,9 +1,16 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom'
 import IconPokeball from "./IconPokeball"
+import { useSelector } from 'react-redux/es/hooks/useSelector'
 
 const Layout = () => {
+    const trainerName = useSelector(state => state.trainerName)
+
+
   return (
     <>
+        <>
+            {trainerName === '' ? <Navigate to={'/'}/> : null }
+        </>
         <header className="header">
             <section className="header__redBlock">
                 <figure className="header__image">
