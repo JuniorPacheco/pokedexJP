@@ -22,7 +22,7 @@ const Pokedex = () => {
 
     const handleFilterName = e => {
         setCurrentPage(1)
-        setFilterName(e.target.value)
+        setFilterName(e.target.value.toLowerCase())
     }
 
     const handleFilterType = e => {
