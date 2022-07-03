@@ -1,59 +1,14 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import axios from 'axios'
 import IconPokeball from "./IconPokeball"
+import { changeNameStats, changeColor, changeFirstLetter } from "../helpers/helpers"
+import useAxiosRequestPokeCard from "../hooks/useAxiosRequestPokeCard"
 
 const PokeCard = ({ urlPokemon }) => {
     const [dataPokemon, setDataPokemon] = useState({})
     const [species, setSpecies] = useState({})
-    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
-    
-    const requestSpeciesData = (url) => {
-        axios.get(url)
-        .then(res => {
-            setSpecies(res.data)
-        })
-        .catch(err => console.log(err))
-    }
-
-    useEffect(() => {
-        axios.get(urlPokemon)
-        .then(res => {
-            setDataPokemon(res.data)
-            requestSpeciesData(res.data.species.url)
-        })
-        .catch(err => console.log(err))
-        .finally(() => setLoading(!loading))
-    }, [])
-
-    const changeNameStats = (statName) => {
-        return (
-            statName === 'hp' ? 
-                'HP' 
-            : 
-                statName  === 'attack' ?
-                    'ATQ'
-                :
-                    statName === 'defense' ?
-                        'DEF'
-                    : 
-                        statName === 'special-attack' ?
-                            'STK'
-                        :
-                            statName === 'special-defense' ?
-                                'SDF'
-                            :
-                                'SPD'
-
-        )
-        //{backgroundColor: species.color?.name}
-    }
-
-    const changeColor = color => color === 'yellow' ? '#f7d708' : color === 'white' ? 'gray' : color
-
-    const changeFirstLetter = (word = '') => word[0]?.toUpperCase() + word?.substring(1)
-
+    const loading = useAxiosRequestPokeCard(setSpecies, setDataPokemon, urlPokemon)
     const handleClickCard = () => navigate(`/pokedex/${dataPokemon.id}`)
 
   return (

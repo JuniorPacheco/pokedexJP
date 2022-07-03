@@ -95,10 +95,10 @@ img {
   background-color: rgba(43,131,0,1);
 }
 .electric {
-  background-color: rgba(255,203,0,1) 100%;
+  background-color: rgba(255,203,0,1);
 }
 .psychic {
-  background-color: rgba(255,0,247,1) 100%;
+  background-color: rgba(255,0,247,1);
 }
 .ice {
   background-color: rgba(0,217,255,1);
@@ -343,6 +343,7 @@ img {
   width: 200px;
   border: none;
   padding: 1.3rem;
+  text-transform: capitalize;
 }
 
 .pokedex__body {
@@ -652,6 +653,7 @@ img {
 .stat__bar {
   border: 1px solid gray;
   border-radius: 2px;
+  overflow: hidden;
 }
 
 .stat__barProgress {

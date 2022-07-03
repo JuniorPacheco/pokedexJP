@@ -1,37 +1,21 @@
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import useAxiosRequestPokemon from '../hooks/useAxiosRequestPokemon'
 
 const Pokemon = () => {
     const [dataPokemon, setDataPokemon] = useState({})
     const [species, setSpecies] = useState({})
-
     const { id } = useParams()
-
-    const requestSpeciesData = (url) => {
-        axios.get(url)
-        .then(res => {
-            setSpecies(res.data)
-        })
-        .catch(err => console.log(err))
-    }
-
-    useEffect(() => {
-        const url = `https://pokeapi.co/api/v2/pokemon/${id}/`
-        axios.get(url)
-        .then(res => {
-            console.log(res.data)
-            setDataPokemon(res.data)
-            requestSpeciesData(res.data.species.url)
-        })
-        .catch(err => console.log(err))
-    }, [])
+    useAxiosRequestPokemon(id, setSpecies, setDataPokemon)
 
     const changeColor = color => color === 'yellow' ? '#f7d708' : color === 'white' ? 'gray' : color
 
   return (
     <main className='pokemon'>
-        <section className='pokemon__principal' style={{background: `linear-gradient(to top, white 0%, white 60% , white 60%, ${changeColor(species.color?.name)} 100%)`, boxShadow: `1px 1px 8px ${changeColor(species.color?.name)}`}}>
+        <section 
+            className='pokemon__principal' 
+            style={{background: `linear-gradient(to top, white 0%, white 60% , white 60%, ${changeColor(species.color?.name)} 100%)`, boxShadow: `1px 1px 8px ${changeColor(species.color?.name)}`}}
+        >
             <figure className='pokemon__image'>
                 <img src={dataPokemon.sprites?.other['official-artwork'].front_default} alt={`${dataPokemon.name} image`} />
             </figure>
@@ -74,9 +58,7 @@ const Pokemon = () => {
                             <p>{`${stat.base_stat} / 150`}</p>
                         </section>
                         <section className='stat__bar'>
-                            <div className='stat__barProgress' style={{width: `${stat.base_stat * 100 / 150}%`}}>
-
-                            </div>
+                            <div className='stat__barProgress' style={{width: `${stat.base_stat * 100 / 150}%`}}></div>
                         </section>
                     </article>
                 ))}
