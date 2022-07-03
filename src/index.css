@@ -365,6 +365,16 @@ img {
   border-radius: 8px;
   position: relative;
   cursor: pointer;
+  position: relative;
+}
+
+.pokeCard:hover {
+  animation: 0.2s 1 linear forwards hoverCard;
+}
+
+@keyframes hoverCard {
+  0%{bottom: 0}
+  100%{bottom: 8px}
 }
 
 .pokeCard__image {
