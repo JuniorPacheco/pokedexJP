@@ -56,7 +56,6 @@ const Pokedex = () => {
             <form className="pokedex__form">
                 <article className="pokedex__searcher">
                     <input type="text" placeholder="Search your pokemón..." value={filterName} onChange={handleFilterName}/>
-                    <input type="submit" value="Search" />
                 </article>
                 <article className="pokedex__filter">
                     <select onChange={handleFilterType}>
