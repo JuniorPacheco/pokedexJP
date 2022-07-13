@@ -235,6 +235,7 @@ img {
 
 .header {
   height: 110px;
+  position: relative;
 }
 
 .header__redBlock {
@@ -257,12 +258,49 @@ img {
   height: 50px;
 }
 
+.button__logout {
+  position: absolute;
+  height: 40px;
+  aspect-ratio: 1;
+  border: none;
+  background-color: var(--colorButton);
+  color: var(--light);
+  font-size: 3rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 5px;
+  cursor: pointer;
+  left: calc(100% - 130px);
+}
+
+.button__logout:hover {
+  background-color: #DD1A1A;
+  color: #000;
+}
+
 .pokeballLayout {
   bottom: -65%;
   left: calc(100% - 100px);
   transform: scale(0.6, 0.6);
 }
 
+@media (min-width: 1140px) {
+    .header__image {
+      left: calc(50vw - (1140px / 2));
+    }
+
+    .pokeballLayout {
+      left: auto;
+      right: calc(50vw - (1140px / 2));
+    }
+
+    .button__logout {
+      left: auto;
+      right: calc(50vw - (1140px / 2) + 100px);
+    }
+}
 /* Pokedex */
 
 .pokedex {
