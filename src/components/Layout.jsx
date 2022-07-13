@@ -1,4 +1,4 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, Navigate, useNavigate } from 'react-router-dom'
 import IconPokeball from "./IconPokeball"
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import Logo from '../images/logo.png'
@@ -7,10 +7,15 @@ import { setTrainerName } from '../store/slices/trainerName.slice'
 
 const Layout = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const trainerName = useSelector(state => state.trainerName)
 
     const goToLogout = () => {
         dispatch(setTrainerName(''))
+    }
+
+    const goToPokedex = () => {
+        navigate('/pokedex')
     }
 
   return (
@@ -20,7 +25,7 @@ const Layout = () => {
         </>
         <header className="header">
             <section className="header__redBlock">
-                <figure className="header__image">
+                <figure onClick={goToPokedex} className="header__image">
                     <img src={Logo} alt="Pokedex logo" />
                 </figure>
             </section>

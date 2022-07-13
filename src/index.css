@@ -250,6 +250,7 @@ img {
   bottom: 0;
   width: 25rem;
   margin: 0;
+  cursor: pointer;
 }
 
 .header__blackBlock {
